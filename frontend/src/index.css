@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+* {
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+body {
+  background-color: #F9FAFB;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  top: -140px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  background: #7F77DD;
+  opacity: 0.5;
+  animation: blobFloatA 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+body::after {
+  bottom: -160px;
+  right: -140px;
+  width: 520px;
+  height: 520px;
+  background: #5DCAA5;
+  opacity: 0.5;
+  animation: blobFloatB 27s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes blobFloatA {
+  0%, 100% { transform: translate(0, 0) scale(1); filter: blur(80px) hue-rotate(0deg); }
+  33% { transform: translate(40px, -25px) scale(1.08); filter: blur(80px) hue-rotate(20deg); }
+  66% { transform: translate(-20px, 30px) scale(0.94); filter: blur(80px) hue-rotate(-15deg); }
+}
+
+@keyframes blobFloatB {
+  0%, 100% { transform: translate(0, 0) scale(1); filter: blur(80px) hue-rotate(0deg); }
+  33% { transform: translate(-30px, 20px) scale(0.92); filter: blur(80px) hue-rotate(-20deg); }
+  66% { transform: translate(25px, -35px) scale(1.06); filter: blur(80px) hue-rotate(15deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
+}
