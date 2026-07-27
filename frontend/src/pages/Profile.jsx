@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import Navbar from '../components/Navbar';
-import { User, Lock, Ruler, LogOut, Calendar, AlertTriangle, Scale,Target , HeartPulse} from 'lucide-react';
+import { User, Lock, Ruler, LogOut, Calendar, AlertTriangle, Scale, Target, HeartPulse } from 'lucide-react';
 
 function Profile() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Profile() {
   const [heightError, setHeightError] = useState('');
   const [savingHeight, setSavingHeight] = useState(false);
 
-const [goals, setGoals] = useState('');
+  const [goals, setGoals] = useState('');
   const [goalsMsg, setGoalsMsg] = useState('');
   const [goalsError, setGoalsError] = useState('');
   const [savingGoals, setSavingGoals] = useState(false);
@@ -65,7 +65,6 @@ const [goals, setGoals] = useState('');
       } catch {
         // no health info saved yet — leave defaults
       }
-
     } catch (err) {
       console.error('Error loading profile:', err);
     }
@@ -126,7 +125,8 @@ const [goals, setGoals] = useState('');
       setSavingHeight(false);
     }
   }
-async function handleGoalsSubmit(e) {
+
+  async function handleGoalsSubmit(e) {
     e.preventDefault();
     setSavingGoals(true);
     setGoalsMsg('');
@@ -140,6 +140,7 @@ async function handleGoalsSubmit(e) {
       setSavingGoals(false);
     }
   }
+
   const COMMON_CONDITIONS = ['Thyroid', 'Diabetes', 'PCOS / PCOD', 'High Blood Pressure', 'Heart Condition'];
 
   function toggleCondition(condition) {
@@ -162,6 +163,7 @@ async function handleGoalsSubmit(e) {
       setSavingHealth(false);
     }
   }
+
   async function handleUnitChange(newUnit) {
     if (newUnit === unit) return;
     setSavingUnit(true);
@@ -211,8 +213,8 @@ async function handleGoalsSubmit(e) {
 
         <div className="grid sm:grid-cols-2 gap-4">
 
-          {/* Update name */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          {/* Your Name — emerald */}
+          <div className="bg-white rounded-2xl border border-emerald-200 p-5 sm:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-indigo-50 text-indigo-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <User size={16} />
@@ -232,14 +234,15 @@ async function handleGoalsSubmit(e) {
               <button
                 type="submit"
                 disabled={savingName}
-                className="w-full bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
+                className="bg-indigo-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
               >
                 {savingName ? 'Saving...' : 'Save Changes'}
               </button>
             </form>
           </div>
-{/* Your goals */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:col-span-2">
+
+          {/* Your Goals — blue */}
+          <div className="bg-white rounded-2xl border border-blue-200 p-5 sm:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-indigo-50 text-indigo-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <Target size={16} />
@@ -265,8 +268,9 @@ async function handleGoalsSubmit(e) {
               </button>
             </form>
           </div>
-          {/* Health information */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:col-span-2">
+
+          {/* Health Information — green */}
+          <div className="bg-white rounded-2xl border border-green-200 p-5 sm:col-span-2">
             <div className="flex items-center gap-2 mb-2">
               <div className="bg-red-50 text-red-500 w-8 h-8 rounded-lg flex items-center justify-center">
                 <HeartPulse size={16} />
@@ -311,8 +315,8 @@ async function handleGoalsSubmit(e) {
             </form>
           </div>
 
-          {/* Change password */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          {/* Change password — teal */}
+          <div className="bg-white rounded-2xl border border-teal-200 p-5">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-red-50 text-red-500 w-8 h-8 rounded-lg flex items-center justify-center">
                 <Lock size={16} />
@@ -341,15 +345,15 @@ async function handleGoalsSubmit(e) {
               <button
                 type="submit"
                 disabled={savingPassword}
-                className="w-full bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
+                className="bg-indigo-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
               >
                 {savingPassword ? 'Changing...' : 'Change Password'}
               </button>
             </form>
           </div>
 
-          {/* Height (for BMI) */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          {/* Height — turquoise/cyan */}
+          <div className="bg-white rounded-2xl border border-cyan-200 p-5">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-emerald-50 text-emerald-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <Ruler size={16} />
@@ -372,15 +376,15 @@ async function handleGoalsSubmit(e) {
               <button
                 type="submit"
                 disabled={savingHeight}
-                className="w-full bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
+                className="bg-indigo-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
               >
                 {savingHeight ? 'Saving...' : 'Save Height'}
               </button>
             </form>
           </div>
 
-          {/* Weight units (merged from Settings) */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          {/* Weight units — emerald */}
+          <div className="bg-white rounded-2xl border border-emerald-200 p-5">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-indigo-50 text-indigo-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <Scale size={16} />
@@ -413,8 +417,8 @@ async function handleGoalsSubmit(e) {
             {unitMsg && <p className="text-emerald-600 text-xs font-medium mt-3">{unitMsg}</p>}
           </div>
 
-          {/* Account overview */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          {/* Account overview — blue */}
+          <div className="bg-white rounded-2xl border border-blue-200 p-5">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-indigo-50 text-indigo-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <Calendar size={16} />
@@ -449,8 +453,8 @@ async function handleGoalsSubmit(e) {
             )}
           </div>
 
-          {/* Logout */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col">
+          {/* Logout — green */}
+          <div className="bg-white rounded-2xl border border-green-200 p-5 flex flex-col sm:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg flex items-center justify-center">
                 <LogOut size={16} />
@@ -460,15 +464,15 @@ async function handleGoalsSubmit(e) {
             <p className="text-xs text-gray-400 mb-auto">
               You'll need to log back in to access your account again.
             </p>
-            <button
+           <button
               onClick={handleLogout}
-              className="w-full mt-4 bg-red-50 text-red-600 py-2 rounded-lg text-sm font-semibold hover:bg-red-100 transition"
+              className="self-start mt-4 bg-red-50 text-red-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-red-100 transition"
             >
               Log Out
             </button>
           </div>
 
-          {/* Delete account */}
+          {/* Delete account — red, unchanged */}
           <div className="bg-white rounded-2xl border border-red-200 p-5 sm:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-red-50 text-red-600 w-8 h-8 rounded-lg flex items-center justify-center">
