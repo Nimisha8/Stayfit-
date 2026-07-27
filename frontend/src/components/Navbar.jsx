@@ -57,7 +57,10 @@ function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <span className="hidden xl:block text-sm text-gray-500 whitespace-nowrap">{user?.name}</span>
+            <div className="hidden xl:flex items-center gap-1.5 text-sm font-medium text-gray-700 whitespace-nowrap">
+              <User size={15} className="text-gray-400" />
+              {user?.name}
+            </div>
           </div>
 
           <button
@@ -91,6 +94,7 @@ function Navbar() {
           })}
           {user?.name && (
             <div className="pt-2 mt-2 border-t border-gray-100 text-xs text-gray-400 px-3">
+              <User size={15} className="text-gray-400 inline mr-1.5" />
               Logged in as {user.name}
             </div>
           )}
