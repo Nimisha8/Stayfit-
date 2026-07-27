@@ -57,9 +57,11 @@ function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <div className="hidden xl:flex items-center gap-1.5 text-sm font-medium text-gray-700 whitespace-nowrap">
-              <User size={15} className="text-gray-400" />
-              {user?.name}
+            <div className="hidden xl:flex items-center gap-2 whitespace-nowrap">
+              <div className="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                {user?.name?.charAt(0).toUpperCase()}
+              </div>
+              <span className="text-sm font-medium text-gray-700">{user?.name}</span>
             </div>
           </div>
 
